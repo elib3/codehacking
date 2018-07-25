@@ -2,6 +2,12 @@
 
 
 @section('content')
+  
+  @if(Session::all())
+      <p class="alert-danger">{{session('deleted_user')}}</p>
+      <p class="alert-success">{{session('created_user')}}</p>
+      <p class="alert-warning">{{session('updated_user')}}</p>
+  @endif
 
   <h1>Users</h1>
 
