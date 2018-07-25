@@ -10,6 +10,7 @@
       <tr>
         <th>ID</th>
         <th>Name</th>
+        <th>Photo</th>
         <th>Email</th>
         <th>Role</th>
         <th>Created At</th>
@@ -25,7 +26,8 @@
 
           <tr>
             <td>{{$user->id}}</td>
-            <td>{{$user->name}}</td>
+            <td><img height="25px" src="{{$user->photo ? $user->photo->file : '/images/default.png'}}" alt=""></td>
+            <td><a href="{{route('admin.users.edit', $user->id)}}">{{$user->name}}</a></td>
             <td>{{$user->email}}</td>
             <td>{{$user->role->name}}</td>
             <td>{{$user->created_at->diffForHumans()}}</td>

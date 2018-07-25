@@ -8,7 +8,13 @@ class Photo extends Model
 {
     //
     
+    protected $uploads = '/images/';
+    
     protected $fillable = ['file'];
     
     
+    //Appending Values To JSON
+    public function getFileAttribute($photo){
+        return $this->uploads . $photo;
+    }
 }
