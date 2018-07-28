@@ -48,6 +48,10 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
+                    @if(Auth::check() && Auth::user()->role->name == 'administrator')
+                    
+                    <li><a href="{{ url('/admin') }}">Admin Panel</a></li>
+                    @endif
                 </ul>
 
                 <!-- Right Side Of Navbar -->
