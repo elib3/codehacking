@@ -7,6 +7,7 @@
     
      @if(Session::all())
           <p class="alert-danger">{{session('deleted_post')}}</p>
+          <p class="alert-danger">{{session('created_post')}}</p>
       @endif
 
     <h1>Posts</h1>

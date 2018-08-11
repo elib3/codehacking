@@ -45,6 +45,8 @@ class AdminUsersController extends Controller
     public function store(UsersRequest $request)
     {
         
+        $input = $request->all();
+        
         if(trim($request->password) == ''){
             
             $input = $request->except('password');
@@ -56,8 +58,6 @@ class AdminUsersController extends Controller
             
         }
         
-        
-        $input = $request->all();
         
         if($file = $request->file('photo_id')){
             
@@ -152,9 +152,11 @@ class AdminUsersController extends Controller
         //
         $user = User::findOrFail($id);
         
-        unlink(public_path() . $user->photo->file);
+        if(!is_null($user->photo)){
+            unlink(public_path() . $user->photo->file);
+            $user->photo->delete();
+        }
         
-        $user->photo->delete();
         $user->delete();
         
         Session::flash('deleted_user', 'The user has been deleted');
