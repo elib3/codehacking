@@ -10,7 +10,10 @@
     <div class="row">@include('includes.form_alert')</div>
     
     <div class="row">
-      <div class="col-sm-12">
+     <div class="col-sm-3">
+         <img src="{{$post->photo ? $post->photo->file : 'http://via.placeholder.com/350x150'}}" alt="" class="img-responsive">
+     </div>
+      <div class="col-sm-9">
             {!! Form::model($post,['method' => 'PATCH', 'action' => ['AdminPostsController@update',$post->id],'files'=>true]) !!}
             
                 <div class="form-group">
