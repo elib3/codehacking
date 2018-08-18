@@ -136,6 +136,10 @@ class AdminPostsController extends Controller
     }
     
     public function post($id){
-        return view('post');
+        
+        $post = Posts::findOrFail($id);
+        $categories = Category::lists('name','id')->all();
+        return view('post',compact('post','categories'));
+        
     }
 }
