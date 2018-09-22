@@ -30,7 +30,7 @@
            @if($posts)
                @foreach($posts as $post)
             <tr>
-                <td>{{$post->id}}</td>
+                <td><a href="{{route('home.post',$post->id)}}">{{$post->id}}</a></td>
                 <td><img height="25px" src="{{$post->photo ? $post->photo->file : '/images/default.png'}}" alt=""></td>
                 <td>{{$post->user->name}}</td>
                 <td>{{$post->category ? $post->category->name : 'Uncategorized'}}</td>

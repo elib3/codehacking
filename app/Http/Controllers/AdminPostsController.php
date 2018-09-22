@@ -139,7 +139,9 @@ class AdminPostsController extends Controller
         
         $post = Posts::findOrFail($id);
         $categories = Category::lists('name','id')->all();
-        return view('post',compact('post','categories'));
+        $comments = $post->comments()->whereIsActive(1)->get();
+        return view('post',compact('post','categories','comments'));
         
     }
+    
 }
